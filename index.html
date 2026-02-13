@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mahashivratri Wishes | For Annu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Rozha+One&display=swap" rel="stylesheet">
+    <style>
+        body, html { 
+            margin: 0; padding: 0; background: #050505; color: #f3e5ab; 
+            font-family: 'Cinzel', serif; overflow-x: hidden;
+            height: 100%; width: 100%;
+        }
+        .hindi { font-family: 'Rozha One', serif; }
+        
+        .bg-video {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: -1; opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        .page {
+            position: absolute; top: 0; left: 0; width: 100%; min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            padding: 20px;
+        }
+        .hidden-page { opacity: 0; pointer-events: none; transform: scale(0.95); }
+        .visible-page { opacity: 1; pointer-events: auto; transform: scale(1); }
+
+        @keyframes divineFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+        .divine-float { animation: divineFloat 5s infinite ease-in-out; }
+
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(234, 179, 8, 0.5);
+            transition: all 0.3s ease;
+        }
+        .btn-glow:active { transform: scale(0.9); }
+    </style>
+</head>
+<body>
+
+    <audio id="divineAudio" loop preload="auto">
+        <source src="SHIVV.mp3" type="audio/mp3">
+    </audio>
+
+    <div id="page1" class="page visible-page">
+        <video id="vid1" class="bg-video" autoplay muted loop playsinline>
+            <source src="SHIV.mp4" type="video/mp4">
+        </video>
+
+        <div class="divine-float text-center px-4">
+            <h1 class="text-4xl md:text-7xl font-bold tracking-widest text-orange-500 mb-2">HAPPY MAHASHIVRATRI</h1>
+            <p class="hindi text-2xl text-yellow-100 opacity-90 mb-10">अन्नू के लिए एक विशेष संदेश</p>
+        </div>
+
+        <button onclick="revealBlessing()" class="btn-glow px-10 py-4 bg-orange-600 text-black font-bold rounded-full text-sm tracking-widest uppercase">
+            यहाँ क्लिक करें 
+        </button>
+    </div>
+
+    <div id="page2" class="page hidden-page" style="display:none;">
+        <video id="vid2" class="bg-video" muted loop playsinline>
+            <source src="SHII.mp4" type="video/mp4">
+        </video>
+
+        <div class="glass-card max-w-lg w-full p-8 text-center relative">
+            <div class="mb-6 divine-float">
+                <img src="MAHADEV.jpg" alt="Mahadev" class="w-44 h-44 mx-auto rounded-full border-4 border-orange-500 shadow-2xl object-cover">
+            </div>
+
+            <h2 class="text-3xl font-bold text-orange-400 mb-2">महाशिवरात्रि 2026</h2>
+            <p class="text-yellow-200 tracking-widest mb-6">HAR HAR MAHADEV</p>
+            
+            <div class="space-y-6">
+                <p class="hindi text-2xl text-white leading-relaxed">
+                    ANNU <br>
+                    शिव की शक्ति, शिव की भक्ति, <br>
+                    खुशियों की बहार मिले, <br>
+                    महादेव के आशीर्वाद से आपको <br>
+                    जीवन में सब कुछ अपार मिले।
+                </p>
+                
+                <div class="h-px w-48 bg-gradient-to-r from-transparent via-orange-500 to-transparent mx-auto opacity-50"></div>
+                
+                <p class="text-lg italic text-orange-200">
+                    "May the divine glory of Lord Shiva <br> 
+                    bless Annu and her family with <br> 
+                    peace, health, and eternal joy."
+                </p>
+            </div>
+
+            <button onclick="location.reload()" class="mt-8 text-[10px] uppercase tracking-[0.3em] opacity-40 hover:opacity-100 transition">Reset Divine Journey</button>
+        </div>
+    </div>
+
+    <script>
+        function revealBlessing() {
+            const p1 = document.getElementById('page1');
+            const p2 = document.getElementById('page2');
+            const audio = document.getElementById('divineAudio');
+            const vid2 = document.getElementById('vid2');
+
+            // Play the music first
+            audio.play().catch(e => console.log("Audio waiting for interaction"));
+
+            // Start transition
+            p1.classList.remove('visible-page');
+            p1.classList.add('hidden-page');
+
+            setTimeout(() => {
+                p1.style.display = 'none';
+                p2.style.display = 'flex';
+                
+                if(vid2) {
+                    vid2.play();
+                }
+
+                setTimeout(() => {
+                    p2.classList.remove('hidden-page');
+                    p2.classList.add('visible-page');
+                }, 50);
+            }, 800);
+        }
+    </script>
+</body>
+</html>
